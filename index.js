@@ -3,27 +3,24 @@ var exec = require('child_process').exec
 function _command (cmd, dir, cb) {
   if (typeof dir === 'function') cb = dir, dir = __dirname
   exec(cmd, { cwd: dir }, function (err, stdout, stderr) {
-    cb(stdout.split('\n').join(''))
+    if (err) {
+      return cb(err)
+    }
+    cb(null, stdout.split('\n').join(''))
   })
 }
 
-module.exports = { 
-    short : function (cb) { 
-      _command('git rev-parse --short HEAD', cb)
-    }
-  , long : function (cb) { 
-      _command('git rev-parse HEAD', cb)
-    }
-  , branch : function (cb) { 
-      _command('git rev-parse --abbrev-ref HEAD', cb)
-    }
-  , tag : function (cb) { 
-      _command('git describe --always --tag --abbrev=0', cb)
-    }
-  , log : function (cb) { 
-      _command('git log --no-color --pretty=format:\'[ "%H", "%s", "%cr", "%an" ],\' --abbrev-commit', function (str) {
+module.exports = {
+    short : _command.bind(null, 'git rev-parse --short HEAD')
+  , long : _command.bind(null, 'git rev-parse HEAD')
+  , branch : _command.bind(null, 'git rev-parse --abbrev-ref HEAD')
+  , tag : _command.bind(null, 'git describe --always --tag --abbrev=0')
+  , log : function (dir, cb) {
+      if (typeof dir === 'function') cb = dir, dir = __dirname
+      _command('git log --no-color --pretty=format:\'[ "%H", "%s", "%cr", "%an" ],\' --abbrev-commit', dir, function (err, str) {
+        if (err) return cb(err)
         str = str.substr(0, str.length-1)
-        cb(JSON.parse('[' + str + ']'))
+        cb(null, JSON.parse('[' + str + ']'))
       })
     }
 }

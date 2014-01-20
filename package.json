@@ -1,6 +1,6 @@
 {
-  "name" : "git-rev",
-  "version" : "0.2.1",
+  "name" : "git-rev-2",
+  "version" : "0.1.0",
   "description" : "get the current git commit hash, tag or branch in node",
   "main" : "index.js",
   "bin" : {},
@@ -12,14 +12,21 @@
   "scripts" : {},
   "repository" : {
     "type" : "git",
-    "url" : "git://github.com/tblobaum/git-rev.git"
+    "url" : "git://github.com/yanatan16/git-rev.git"
   },
-  "homepage" : "https://github.com/tblobaum/git-rev",
-  "keywords" : [ ],
-  "author" : {
-    "name" : "Thomas Blobaum",
-    "email" : "tblobaum@gmail.com",
-    "url" : "https://github.com/tblobaum/"
-  },
+  "homepage" : "https://github.com/yanatan16/git-rev",
+  "keywords" : [ "git", "revision", "tag", "hash", "short-hash", "branch", "git-log" ],
+  "authors" : [
+    {
+      "name" : "Thomas Blobaum",
+      "email" : "tblobaum@gmail.com",
+      "url" : "https://github.com/tblobaum/"
+    },
+    {
+      "name": "Jon Eisen",
+      "email": "jon@joneisen.me",
+      "url": "http://joneisen.me"
+    }
+  ],
   "license" : "MIT"
 }
