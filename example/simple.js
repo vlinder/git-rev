@@ -20,6 +20,13 @@ git.tag(function (err, str) {
   // => 0.1.0
 })
 
+git.describe(function (err, str) {
+  console.log('describe', str)
+  // => 0.1.0-22-g2ea34b
+  // or if no tag was found, fallback to hash
+  // => 2ea34b
+})
+
 git.log(function (err, array) {
   console.log('log', array)
   // [ [ 'aefdd946ea65c88f8aa003e46474d57ed5b291d1',

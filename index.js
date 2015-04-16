@@ -15,6 +15,7 @@ module.exports = {
   , long : _command.bind(null, 'git rev-parse HEAD')
   , branch : _command.bind(null, 'git rev-parse --abbrev-ref HEAD')
   , tag : _command.bind(null, 'git describe --always --tag --abbrev=0')
+  , describe : _command.bind(null, 'git describe --tags --always')
   , log : function (dir, cb) {
       if (typeof dir === 'function') cb = dir, dir = __dirname
       _command('git log --no-color --pretty=format:\'[ "%H", "%s", "%cr", "%an" ],\' --abbrev-commit', dir, function (err, str) {

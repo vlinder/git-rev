@@ -15,7 +15,7 @@
     "url" : "git://github.com/yanatan16/git-rev.git"
   },
   "homepage" : "https://github.com/yanatan16/git-rev",
-  "keywords" : [ "git", "revision", "tag", "hash", "short-hash", "branch", "git-log" ],
+  "keywords" : [ "git", "revision", "tag", "describe", "hash", "short-hash", "branch", "git-log" ],
   "authors" : [
     {
       "name" : "Thomas Blobaum",

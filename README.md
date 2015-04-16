@@ -31,6 +31,13 @@ git.tag(__dirname + "node_modules/some-git-repo", function (err, str) {
   // => 0.1.0
 })
 
+git.describe(__dirname + "node_modules/some-git-repo", function (err, str) {
+  console.log('describe', str)
+  // => 0.1.0-22-gf3da3c6
+  // or if no tag exists in the tree, fallback to hash only
+  // => f3da3c6
+})
+
 ```
 
 # Methods
@@ -68,6 +75,9 @@ return the result of `git rev-parse HEAD`
 
 ### .tag([dir,] function (err, tag) { ... })
 return the current tag
+
+### .describe([dir,] function (err, desc) { ... })
+return the result of `git describe --tags --always`
 
 ### .branch([dir,] function (err, branch) { ... })
 return the current branch
